@@ -30,7 +30,7 @@ export default function Todo(){
     return(
         <div id="todo">
             <form action="" onSubmit={addNewTodo}>
-                <input ref={todoTitle} id='input' type="text"/>
+                <input ref={todoTitle} id='input' type="text" placeholder="Add New TODO"/>
                 <button>ADD</button>
             </form>
             
