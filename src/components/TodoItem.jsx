@@ -1,11 +1,22 @@
-import { useState } from "react";
+import { useState, useContext} from "react";
+import { TodoContext } from "./Todo";
+
+
 export default function TodoItem({item}){
     
-    const[completed, setCompleted] = useState(false);
+    const [checked, setChecked] = useState(false);
+    const deleteTodo = useContext(TodoContext)
+
+    function handleChange(){
+        setChecked(!checked);
+    };
 
     return(
-        
-        <li>{!completed? item.title : <s>{item.title}</s>}</li>
+        <div>
+            <input type="checkbox" onChange={handleChange}/>
+            <span>{!checked? item.title : <s>{item.title}</s>}</span>
+            <button onClick={()=>deleteTodo(item)}> x </button>
+        </div>
         
     );
 }
