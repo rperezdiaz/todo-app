@@ -1,9 +1,11 @@
 import { useState } from "react";
 export default function TodoItem({item}){
     
-    const[comleted, setCompleted] = useState(false);
+    const[completed, setCompleted] = useState(false);
 
     return(
-        <li>{item.title}</li>
+        
+        <li>{!completed? item.title : <s>{item.title}</s>}</li>
+        
     );
 }
