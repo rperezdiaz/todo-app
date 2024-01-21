@@ -1,4 +1,5 @@
 import { useReducer, useRef } from "react";
+import TodoList from "./TodoList";
 
  let id = 0;
 
@@ -18,14 +19,11 @@ export default function Todo(){
     }
     
     return(
-        <>
+        <div id="todo">
             <input ref={todoTitle} id='input' type="text" />
             <button onClick={addNewTodo}>ADD</button>
-            <ul>
-                {todos.map((todo) => <li key={todo.id}>{todo.title}</li>)}
-            </ul>            
-            
-        </>
+            <TodoList list={todos} />       
+        </div>
     );
 }
 
@@ -34,7 +32,6 @@ function reducer(state, action){
     switch(type){
         case 'add': {
             const newState = [...state];
-            console.log(payload);
             newState.push(payload);
             return newState;
         }
