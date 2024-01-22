@@ -31,7 +31,7 @@ export default function Todo(){
         <div id="todo">
             <form action="" onSubmit={addNewTodo}>
                 <input ref={todoTitle} id='input' type="text" placeholder="Add New TODO"/>
-                <button>ADD</button>
+                <button>+</button>
             </form>
             
             <TodoContext.Provider value={deleteTodo}>
@@ -50,7 +50,7 @@ function reducer(state, action){
             return newState;
         }
         case 'delete': {
-            return state.filter((todo)=>todo.id != payload.id)
+            return state.filter((todo)=>todo.id !== payload.id)
         }
         default: {
             break
