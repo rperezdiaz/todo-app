@@ -1,5 +1,6 @@
 import { useState, useContext} from "react";
 import { TodoContext } from "./Todo";
+import Trash from "../assets/Trash.svg"
 
 
 export default function TodoItem({item}){
@@ -12,10 +13,10 @@ export default function TodoItem({item}){
     };
 
     return(
-        <div>
+        <div className="todo-item">
             <input type="checkbox" onChange={handleChange}/>
             <span>{!checked? item.title : <s>{item.title}</s>}</span>
-            <button onClick={()=>deleteTodo(item)}> x </button>
+            <button className="button" onClick={()=>deleteTodo(item)}><img src={Trash} alt="" /></button>
         </div>
         
     );

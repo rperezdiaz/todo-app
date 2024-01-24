@@ -1,0 +1,33 @@
+body {
+
+}
+.button{
+    background-color: rgb(255, 0, 0);
+    border-radius: 500px;
+    border: 1px solid black;
+}
+
+.button:hover{
+  background-color: crimson;
+}
+
+.button > * {
+  padding-top: 2px;
+}
+
+.todo-item{
+    display:flex;
+    align-content:center;
+    justify-content: space-around;
+}
+
+.todo-item:last-of-type{
+  margin-left: auto;
+}
+
+img {
+  width: 10px;
+}
+.todolist-container{
+  padding-top: 2em;
+}
