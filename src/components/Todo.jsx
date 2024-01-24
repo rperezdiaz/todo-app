@@ -45,8 +45,7 @@ function reducer(state, action){
     const {type, payload} = action;
     switch(type){
         case 'add': {
-            const newState = [...state];
-            newState.push(payload);
+            const newState = [...state, payload];
             return newState;
         }
         case 'delete': {
