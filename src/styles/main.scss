@@ -3,11 +3,11 @@
 .button{
     background-color: #ffffff;
     border-radius: 50px;
-    border: 2px solid $red-color;
+    border: 3px solid $red-color;
 }
 
 .button:hover{
-  background-color: #bababa;
+  background-color: $red-color;
 }
 
 .button > * {
