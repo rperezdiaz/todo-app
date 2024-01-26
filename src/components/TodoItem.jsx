@@ -6,7 +6,7 @@ export default function TodoItem({item}){
     const [checked, setChecked] = useState(false);
     const context = useContext(TodoContext)
 
-    function handleChange(){
+    const handleChange = () =>{
         setChecked(!checked);
     };
 
