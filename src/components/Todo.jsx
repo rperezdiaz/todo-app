@@ -1,23 +1,20 @@
-import { useReducer, useRef, createContext } from "react";
+import { useReducer, createContext } from "react";
 import TodoList from "./TodoList";
+import AddTodo from "./AddTodo";
 
 let id = 0;
 export const TodoContext = createContext(null);
 
 export default function Todo(){
     const [todos, dispatch] = useReducer(reducer,[])
-    const todoTitle = useRef()
 
-    const addNewTodo = (e) => {
-        e.preventDefault();
-        const title = todoTitle.current.value;
+    const addNewTodo = (title) => {
         if (title) {
             dispatch({
                 type: 'add',
                 payload: {title: title, id: id++}
             });
-        } 
-        todoTitle.current.value = '';
+        } ;
     }
 
     const deleteTodo = (todo) => {
@@ -29,12 +26,8 @@ export default function Todo(){
     
     return(
         <div id="todo">
-            <form action="" onSubmit={addNewTodo}>
-                <input ref={todoTitle} id='input' type="text" placeholder="Add New TODO"/>
-                <button>+</button>
-            </form>
-            
-            <TodoContext.Provider value={deleteTodo}>
+            <TodoContext.Provider value={{deleteTodo, addNewTodo}}>
+                <AddTodo />
                 <TodoList list={todos} /> 
             </TodoContext.Provider>
         </div>
