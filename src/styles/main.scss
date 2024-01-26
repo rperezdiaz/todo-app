@@ -1,14 +1,13 @@
-body {
+@import "./_variables";
 
-}
 .button{
-    background-color: rgb(255, 0, 0);
-    border-radius: 500px;
-    border: 1px solid black;
+    background-color: #ffffff;
+    border-radius: 50px;
+    border: 2px solid $red-color;
 }
 
 .button:hover{
-  background-color: crimson;
+  background-color: #bababa;
 }
 
 .button > * {
@@ -17,12 +16,13 @@ body {
 
 .todo-item{
     display:flex;
-    align-content:center;
+    align-items:center;
     justify-content: space-around;
+    margin-bottom: 5px;
 }
 
-.todo-item:last-of-type{
-  margin-left: auto;
+.todo-item:nth-of-type(2n){
+  background-color: #eaeaea;
 }
 
 img {
