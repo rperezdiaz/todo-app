@@ -9,7 +9,9 @@ export default function AddTodo(){
     function handleSubmit(e){
         e.preventDefault();
         let title = todoTitle.current.value;
-        context.addNewTodo(title);
+        if (!!title.trim()){
+            context.addNewTodo(title);
+        }
         todoTitle.current.value = '';
     }
 
