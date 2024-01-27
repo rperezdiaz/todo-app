@@ -6,7 +6,7 @@ let id = 0;
 export const TodoContext = createContext(null);
 
 export default function Todo(){
-    const [todos, dispatch] = useReducer(reducer,[])
+    const [todos, dispatch] = useReducer(reducer,[{title:"Learn React", id:-1}])
 
     const addNewTodo = (title) => {
         if (title) {
