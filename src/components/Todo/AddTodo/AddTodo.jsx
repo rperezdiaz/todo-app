@@ -1,5 +1,5 @@
 import { useRef, useContext} from "react";
-import { TodoContext } from "./Todo";
+import { TodoContext } from "../Todo";
 
 export default function AddTodo(){
 

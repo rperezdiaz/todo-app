@@ -1,5 +1,5 @@
-import "./App.css";
-import Todo from "./components/Todo";
+// import "./App.css";
+import Todo from "./components/Todo/Todo";
 import Header from "./components/Header";
 import './styles/main.scss'
 

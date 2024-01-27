@@ -1,33 +1,62 @@
 @import "./_variables";
 
+body{
+  font-family: 'Roboto';
+}
+
+.App{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#todo{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width:fit-content;
+  
+}
+
+
 .button{
-    background-color: #ffffff;
+  background-color: transparent;
     border-radius: 50px;
-    border: 3px solid $red-color;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border:none;
 }
 
-.button:hover{
-  background-color: $red-color;
+svg{
+  height: 19px;
 }
 
-.button > * {
-  padding-top: 2px;
+svg:hover{
+  stroke: $red-color;
 }
 
-.todo-item{
+.todo-item-container{
     display:flex;
     align-items:center;
-    justify-content: space-around;
-    margin-bottom: 5px;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    width: 500px;
+    height: 40px;
+    padding: 0 10px;
+    border-radius: 10px;
+    box-shadow: #818181 2px 2px 3px;
+    border: 1px solid transparent;
 }
 
-.todo-item:nth-of-type(2n){
-  background-color: #eaeaea;
+.todo-item-container:nth-of-type(2n){
+  background-color: #f1f1f1;
 }
 
-img {
-  width: 10px;
+.todo-item-container:hover{
+  border: 1px solid black;
 }
-.todolist-container{
-  padding-top: 2em;
+
+ul{
+  padding: 0;
 }
