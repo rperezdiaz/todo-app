@@ -17,8 +17,8 @@ export default function AddTodo(){
 
     return(
         <form action="" onSubmit={handleSubmit}>
-            <input ref={todoTitle} id='input' type="text" placeholder="Add New TODO"/>
-            <button>+</button>
+            <input ref={todoTitle} id='add-form-input' className="add-form" type="text" placeholder="ADD NEW TASK"/>
+            <button id="add-form-button" className="add-form">ADD</button>
         </form>
     )
 

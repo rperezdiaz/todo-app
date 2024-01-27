@@ -7,7 +7,7 @@ function App() {
 
   return (
     <div className="App">
-      <Header title={'TODO List'}/>
+      <Header title={'TODO LIST'}/>
       <Todo/>
     </div>
   );

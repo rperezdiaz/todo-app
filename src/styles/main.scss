@@ -15,11 +15,29 @@ body{
   flex-direction: column;
   align-items: center;
   width:fit-content;
-  
+  // background-color: #fffdda;
+  width:500px;
+  border-radius: 10px;
+  padding-top: 25px;
 }
 
 
-.button{
+#add-form-input{
+  border-radius: 10px 0 0 10px;
+}
+
+#add-form-button{
+  border-radius: 0 10px 10px 0;
+  background-color: #8400ff;
+  color: white;
+}
+
+.add-form{
+  border: 1px solid #8400ff;
+}
+
+
+.delete-todo{
   background-color: transparent;
     border-radius: 50px;
     display: flex;
@@ -40,8 +58,9 @@ svg:hover{
     display:flex;
     align-items:center;
     justify-content: space-between;
+    flex-grow: 2;
     margin-bottom: 10px;
-    width: 500px;
+    width: 400px;
     height: 40px;
     padding: 0 10px;
     border-radius: 10px;
@@ -49,9 +68,9 @@ svg:hover{
     border: 1px solid transparent;
 }
 
-.todo-item-container:nth-of-type(2n){
-  background-color: #f1f1f1;
-}
+// .todo-item-container:nth-of-type(2n){
+//   background-color: #f1f1f1;
+// }
 
 .todo-item-container:hover{
   border: 1px solid black;
@@ -60,3 +79,14 @@ svg:hover{
 ul{
   padding: 0;
 }
+
+.checkbox-title-container{
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+// input[type="checkbox"]{
+//   margin: 0 15px 0 0;
+// }
