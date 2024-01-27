@@ -14,7 +14,6 @@ body{
   display: flex;
   flex-direction: column;
   align-items: center;
-  // background-color: #fffdda;
   width:500px;
   border-radius: 10px;
   padding-top: 25px;
@@ -23,12 +22,12 @@ body{
 form{
   height: 25px;
   border-radius: 50px;
-  border: 1px solid  #8400ff;
+  border: 1px solid  $purple;
   display: flex;
   align-items: center;
   box-sizing: border-box;
   width: 275px;
-
+  background-color: white;
 }
 
 form:focus-within{
@@ -45,22 +44,18 @@ form:focus-within{
 
 #add-form-button{
   border-radius: 50px;
-  background-color: #8400ff;
+  background-color: $purple;
   color: white;
   border: none; 
   margin-right: 4px;
 }
 
 #add-form-button:hover{
-  border-radius: 50px;
-  background-color: #6b00cf;
-  color: white;
-  border: none; 
-  margin-right: 4px;
+  background-color: $purple-dark;
 }
 
 // .add-form{
-//   border: 1px solid #8400ff;
+//   border: 1px solid $purple;
 // }
 
 
@@ -72,6 +67,8 @@ form:focus-within{
     align-items: center;
     border:none;
 }
+
+
 
 svg{
   height: 19px;
@@ -86,9 +83,11 @@ svg:hover{
     align-items:center;
     justify-content: space-between;
     flex-grow: 2;
+    background-color: white;
     margin-bottom: 10px;
     width: 400px;
-    height: 40px;
+    min-height: 40px;
+    height: fit-content;
     padding: 0 10px;
     border-radius: 10px;
     box-shadow: #818181 2px 2px 3px;
@@ -103,6 +102,8 @@ svg:hover{
   border: 1px solid black;
 }
 
+
+
 ul{
   padding: 0;
 }
@@ -114,6 +115,9 @@ ul{
   gap: 15px;
 }
 
-// input[type="checkbox"]{
-//   margin: 0 15px 0 0;
-// }
+.todo-title{
+  text-wrap: pretty;
+  max-width: 328px;
+  white-space: normal;
+  overflow-wrap: break-word;
+}
