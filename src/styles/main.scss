@@ -2,6 +2,7 @@
 
 body{
   font-family: 'Roboto';
+  background-color: #ececec;
 }
 
 .App{
@@ -115,6 +116,7 @@ ul{
   display: inherit;
   width: 1.7rem;
   color: black;
+  border-radius: 25px;
   cursor: pointer;
 }
 
@@ -134,4 +136,8 @@ ul{
   max-width: 328px;
   white-space: normal;
   overflow-wrap: break-word;
+}
+
+.title-checked{
+  color: #adadad;
 }
