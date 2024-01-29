@@ -20,7 +20,7 @@ body{
 }
 
 form{
-  height: 25px;
+  height: 40px;
   border-radius: 50px;
   border: 1px solid  $purple;
   display: flex;
@@ -43,39 +43,40 @@ form:focus-within{
 }
 
 #add-form-button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-radius: 50px;
   background-color: $purple;
   color: white;
   border: none; 
-  margin-right: 4px;
+  margin-right: 3px;
+  width: 1.9rem;
+  height: 1.9rem
 }
 
 #add-form-button:hover{
   background-color: $purple-dark;
 }
 
-// .add-form{
-//   border: 1px solid $purple;
-// }
-
 
 .delete-todo{
   background-color: transparent;
-    border-radius: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border:none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border:none;
+  color: black;
+  width: 25px;
+  padding: 0;
 }
 
-
+.delete-todo:hover{
+  color: $red-color
+}
 
 svg{
-  height: 19px;
-}
-
-svg:hover{
-  stroke: $red-color;
+  width: 100%;
 }
 
 .todo-item-container{
@@ -101,7 +102,6 @@ svg:hover{
 .todo-item-container:hover{
   border: 1px solid black;
 }
-
 
 
 ul{

@@ -1,5 +1,6 @@
 import { useRef, useContext} from "react";
 import { TodoContext } from "../Todo";
+import {Icon} from "../../Icon"
 
 export default function AddTodo(){
 
@@ -18,7 +19,9 @@ export default function AddTodo(){
     return(
         <form action="" onSubmit={handleSubmit}>
             <input ref={todoTitle} id='add-form-input' className="add-form" type="text" placeholder="ADD NEW TASK"/>
-            <button id="add-form-button" className="add-form">+</button>
+            <button id="add-form-button" className="add-form">
+                <Icon.Add />
+            </button>
         </form>
     )
 
