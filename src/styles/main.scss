@@ -111,6 +111,17 @@ ul{
   padding: 0;
 }
 
+.checkbox{
+  display: inherit;
+  width: 1.7rem;
+  color: black;
+  cursor: pointer;
+}
+
+.checkbox-checked{
+  color:rgb(64, 225, 58);
+}
+
 .checkbox-title-container{
   flex-grow: 1;
   display: flex;

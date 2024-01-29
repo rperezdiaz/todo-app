@@ -24,8 +24,12 @@ export default function TodoItem({item}){
         className="todo-item-container" 
         onMouseEnter={handleMouseEnter} 
         onMouseLeave={handleMouseLeave}>
-            <div className="checkbox-title-container" onClick={handleChange}>
-                <input type="checkbox" className="checkbox" checked={checked} />
+            <div className="checkbox-title-container" >
+                <div className={ `checkbox icon-container ${checked? 'checkbox-checked': ''}`} onClick={handleChange} >
+                {
+                    checked ? <Icon.Checked /> : <Icon.Unchecked />
+                }
+                </div>
                 <span className="todo-title">{
                     !checked? item.title : <s>{item.title}</s>}
                     </span>
