@@ -21,11 +21,12 @@ export default function TodoItem({item}){
     }
 
     const submitEdit = () => {
-        
-        dispatch({
+        if(editedTitle.current.value.trim()){
+            dispatch({
             type: 'edit',
             payload: editedTitle.current.value
         });
+        }
         setIsEditing(!isEditing);
     }
 
