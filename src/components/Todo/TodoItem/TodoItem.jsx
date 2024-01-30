@@ -1,15 +1,17 @@
-import { useState, useContext} from "react";
+import { useState, useContext, useReducer} from "react";
 import { TodoContext } from "../Todo";
 import { Icon } from "../../Icon";
 
 export default function TodoItem({item}){
-    
-    const [hovering, setHovering] = useState(false)
-    const [checked, setChecked] = useState(false);
-    const context = useContext(TodoContext)
+    const [todo ,dispatch] = useReducer(todoItemReducer, item);
+    const [hovering, setHovering] = useState(false);
+    const context = useContext(TodoContext);
 
     const handleChange = () =>{
-        setChecked(!checked);
+        dispatch({
+            type: 'check',
+            payload: !todo.checked
+        })
     };
 
     const handleMouseEnter = () => {
@@ -25,12 +27,12 @@ export default function TodoItem({item}){
         onMouseEnter={handleMouseEnter} 
         onMouseLeave={handleMouseLeave}>
             <div className="checkbox-title-container" >
-                <div className={ `checkbox icon-container ${checked? 'checkbox-checked': ''}`} onClick={handleChange} role="button" >
+                <div className={ `checkbox icon-container ${todo.checked? 'checkbox-checked': ''}`} onClick={handleChange} role="button" >
                 {
-                    checked ? <Icon.Checked /> : <Icon.Unchecked />
+                    todo.checked ? <Icon.Checked /> : <Icon.Unchecked />
                 }
                 </div>
-                <span className={`todo-title ${checked? 'title-checked' : ''}`}>
+                <span className={`todo-title ${todo.checked? 'title-checked' : ''}`}>
                     {item.title}
                 </span>
             </div>
@@ -41,4 +43,19 @@ export default function TodoItem({item}){
         </li>
         
     );
+}
+
+const todoItemReducer = (state, action) =>{
+    const{type,payload} = action;
+    switch(type){
+        case 'check':{
+            return {...state, checked:payload};
+        }
+        case 'edit':{
+            break;
+        }
+        default: {
+            break;
+        }
+    }
 }

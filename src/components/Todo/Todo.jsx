@@ -6,13 +6,13 @@ let id = 0;
 export const TodoContext = createContext(null);
 
 export default function Todo(){
-    const [todos, dispatch] = useReducer(reducer,[{title:"Learn React", id:-1}])
+    const [todos, dispatch] = useReducer(reducer,[{title:"Learn React", id:-1, checked:false}]);
 
     const addNewTodo = (title) => {
         if (title) {
             dispatch({
                 type: 'add',
-                payload: {title: title, id: id++}
+                payload: {title: title, id: id++, checked:false}
             });
         } ;
     }
@@ -42,10 +42,10 @@ function reducer(state, action){
             return newState;
         }
         case 'delete': {
-            return state.filter((todo)=>todo.id !== payload.id)
+            return state.filter((todo)=>todo.id !== payload.id);
         }
         default: {
-            break
+            break;
         }
     }
 
