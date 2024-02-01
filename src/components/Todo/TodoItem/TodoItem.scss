@@ -1,0 +1,68 @@
+@import "../../../styles/variables";
+
+.delete-todo{
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border:none;
+    color: #969696;
+    width: 25px;
+    padding: 0;
+  }
+  
+.delete-todo:hover{
+    color: $red-color
+}
+
+.todo-item-container{
+    display:flex;
+    align-items:center;
+    justify-content: space-between;
+    flex-grow: 2;
+    background-color: white;
+    margin-bottom: 10px;
+    width: 400px;
+    min-height: 40px;
+    height: fit-content;
+    padding: 0 10px;
+    border-radius: 10px;
+    box-shadow: #818181 2px 2px 3px;
+    border: 1px solid transparent;
+    transition: enter 1s;
+}
+
+.todo-item-container:hover{
+    border: 1px solid black;
+}
+
+.checkbox{
+    display: inherit;
+    width: 1.7rem;
+    color: black;
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+.checkbox-checked{
+    color:#31de24;
+}
+
+.checkbox-title-container{
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.todo-title{
+    text-wrap: pretty;
+    max-width: 328px;
+    white-space: normal;
+    overflow-wrap: break-word;
+}
+
+.title-checked{
+    color: #adadad;
+    text-decoration: line-through;
+}

@@ -1,0 +1,41 @@
+@import "../../../styles/variables";
+
+.add-todo-form{
+    height: 40px;
+    border-radius: 50px;
+    border: 1px solid  $purple;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    width: 275px;
+    background-color: white;
+  }
+  
+  form:focus-within{
+    border-width: 2px;
+  }
+  
+  #add-form-input{
+    flex-grow: 1;
+    outline: none;
+    border: none;
+    border-radius: 50px;
+    padding-left: 10px;
+  }
+  
+  #add-form-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+    background-color: $purple;
+    color: white;
+    border: none; 
+    margin-right: 3px;
+    width: 1.9rem;
+    height: 1.9rem
+  }
+
+  #add-form-button:hover{
+    background-color: $purple-dark;
+  }

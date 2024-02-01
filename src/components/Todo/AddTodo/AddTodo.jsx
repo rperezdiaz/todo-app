@@ -1,6 +1,7 @@
 import { useRef, useContext} from "react";
 import { TodoContext } from "../Todo";
-import {Icon} from "../../Icon"
+import {Icon} from "../../Icon";
+import './AddTodo.scss';
 
 export default function AddTodo(){
 

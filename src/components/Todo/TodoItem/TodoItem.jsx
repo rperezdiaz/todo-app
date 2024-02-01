@@ -1,6 +1,7 @@
 import { useState, useContext, useReducer, useRef} from "react";
 import { TodoContext } from "../Todo";
 import { Icon } from "../../Icon";
+import './TodoItem.scss'
 
 export default function TodoItem({item}){
     const [todo ,dispatch] = useReducer(todoItemReducer, item);
