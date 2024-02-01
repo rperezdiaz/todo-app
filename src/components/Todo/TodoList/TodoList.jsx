@@ -1,4 +1,5 @@
 import TodoItem from "../TodoItem/TodoItem";
+import "./TodoList.scss"
 
 export default function TodoList({list}){
     return(
