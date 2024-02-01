@@ -42,10 +42,12 @@
     color: black;
     border-radius: 25px;
     cursor: pointer;
+    transition: 0.5s ease;
 }
 
 .checkbox-checked{
     color:#31de24;
+    transform: rotateY(360deg);
 }
 
 .checkbox-title-container{
