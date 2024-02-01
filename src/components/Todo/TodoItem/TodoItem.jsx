@@ -54,7 +54,7 @@ export default function TodoItem({item}){
                 {
                     isEditing ? 
                     <form onSubmit={submitEdit}>
-                        <input ref={editedTitle} type="text" value={todo.title}/>
+                        <input ref={editedTitle} type="text" defaultValue={todo.title}/>
                     </form> 
                     : 
                     <div 
