@@ -1,22 +1,26 @@
-import { useState, useContext, useReducer, useRef} from "react";
+import { useState, useContext,useRef, memo} from "react";
 import { TodoContext } from "../Todo";
 import { Icon } from "../../Icon";
-import './TodoItem.scss'
+import { deleteTodo, editTodoTitle, toggleTodoDone } from "../todo.actions";
+import './TodoItem.scss';
 
-export default function TodoItem({todo}){
+function TodoItem({id, title,isDone}){
     const [hovering, setHovering] = useState(false);
     const [isEditing, setIsEditing] = useState(false);
-    const context = useContext(TodoContext);
+    const {dispatch} = useContext(TodoContext);
     const editTitleRef = useRef();
 
+    console.log(title)
+
+
     const handleDone = () =>{
-        context.toggleTodoDone(todo.id, !todo.isDone);
+        dispatch(toggleTodoDone(id, !isDone));
     };
 
     const submitEdit = (e) => {
         e.preventDefault();
         if(editTitleRef.current.value.trim()){
-            context.editTodoTitle(todo.id, editTitleRef.current.value)
+            dispatch(editTodoTitle(id, editTitleRef.current.value))
         };
         setIsEditing(!isEditing);
     }
@@ -43,30 +47,32 @@ export default function TodoItem({todo}){
         onMouseLeave={handleMouseLeave}>
             <div className="checkbox-title-container" >
                 <div 
-                className={ `checkbox icon-container ${todo.isDone? 'checkbox-checked': ''}`} 
+                className={ `checkbox icon-container ${isDone? 'checkbox-checked': ''}`} 
                 onClick={handleDone} 
                 role="button" >
                 {
-                    todo.isDone ? <Icon.Checked /> : <Icon.Unchecked />
+                    isDone ? <Icon.Checked /> : <Icon.Unchecked />
                 }
                 </div>
                 {
                     isEditing ? 
                     <form onSubmit={submitEdit}>
-                        <input ref={editTitleRef} type="text" defaultValue={todo.title} autoFocus onBlur={handleOnBlur}/>
+                        <input ref={editTitleRef} type="text" defaultValue={title} autoFocus onBlur={handleOnBlur}/>
                     </form> 
                     : 
                     <div 
-                    className={`todo-title ${todo.isDone? 'title-checked' : ''}`}
+                    className={`todo-title ${isDone? 'title-checked' : ''}`}
                     onDoubleClick={handleDblClick}>
-                        {todo.title}
+                        {title}
                     </div>
                 }
             </div>
-            <button className={`delete-todo icon-container`} onClick={()=>context.deleteTodo(todo)}>
+            <button className={`delete-todo icon-container`} onClick={()=>{dispatch(deleteTodo(id))}}>
                 { hovering ? <Icon.Trashcan />: null}
             </button>
         </li>
         
     );
 }
+
+export default memo(TodoItem);

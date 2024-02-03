@@ -5,25 +5,17 @@ export default function todoReducer(state, action){
             return [...state, payload];
         }
         case 'delete': {
-            return state.filter((todo)=>todo.id !== payload.id);
+            return state.filter((todo)=>todo.id !== payload);
         }
         case 'editTitle':{
-            return state.map((todo)=>{
-                if(todo.id === payload.id){
-                    return {...todo, title:payload.title};
-                }else{
-                    return todo;
-                }
-            })
+            return state.map(
+                (todo)=>(todo.id === payload.id ? {...todo, title:payload.title} :todo)
+            )
         }
         case 'toggleDone':{
-            return state.map((todo)=>{
-                if(todo.id === payload.id){
-                    return {...todo, isDone:payload.isDone};
-                }else{
-                    return todo;
-                }
-            })
+            return state.map((todo) =>(
+                todo.id === payload.id ? {...todo, isDone:payload.isDone} : todo
+            ))
         }
         default: {
             break;
