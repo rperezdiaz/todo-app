@@ -5,11 +5,15 @@ export default function TodoList({list}){
     return(
         <ul className="todolist-container">
             {list.map((todo) => (
-                <TodoItem 
+                <li 
                 key={todo.id} 
-                id={todo.id}
-                title={todo.title} 
-                isDone={todo.isDone}/>)
+                className="todo-item-container">
+                    <TodoItem 
+                    id={todo.id}
+                    title={todo.title} 
+                    isDone={todo.isDone}/>
+                </li>
+                )
             )}
         </ul> 
     );

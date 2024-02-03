@@ -9,7 +9,7 @@ export const deleteTodo = (id) => ({
 });
 
 export const editTodoTitle = (id, newTitle) => ({
-    type: 'editTitle',
+    type: 'edit',
     payload: { id, title: newTitle }
 });
 

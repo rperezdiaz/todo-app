@@ -7,7 +7,7 @@ export default function todoReducer(state, action){
         case 'delete': {
             return state.filter((todo)=>todo.id !== payload);
         }
-        case 'editTitle':{
+        case 'edit':{
             return state.map(
                 (todo)=>(todo.id === payload.id ? {...todo, title:payload.title} :todo)
             )

@@ -10,7 +10,7 @@ export default function Todo(){
 
     return(
         <div id="todo">
-            <TodoContext.Provider value={{dispatch}}>
+            <TodoContext.Provider value={dispatch}>
                 <AddTodo />
                 <TodoList list={todos} /> 
             </TodoContext.Provider>

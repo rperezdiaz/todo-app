@@ -5,13 +5,11 @@ import { deleteTodo, editTodoTitle, toggleTodoDone } from "../todo.actions";
 import './TodoItem.scss';
 
 function TodoItem({id, title,isDone}){
-    const [hovering, setHovering] = useState(false);
-    const [isEditing, setIsEditing] = useState(false);
-    const {dispatch} = useContext(TodoContext);
-    const editTitleRef = useRef();
-
     console.log(title)
 
+    const [isEditing, setIsEditing] = useState(false);
+    const dispatch = useContext(TodoContext);
+    const editTitleRef = useRef();
 
     const handleDone = () =>{
         dispatch(toggleTodoDone(id, !isDone));
@@ -24,13 +22,6 @@ function TodoItem({id, title,isDone}){
         };
         setIsEditing(!isEditing);
     }
-
-    const handleMouseOver = () => {
-        setHovering(true);
-    }
-    const handleMouseLeave = () => {
-        setHovering(false);
-    }   
     
     const handleDblClick = () => {
         setIsEditing(!isEditing);
@@ -41,10 +32,7 @@ function TodoItem({id, title,isDone}){
     }
 
     return(
-        <li 
-        className="todo-item-container" 
-        onMouseOver={handleMouseOver} 
-        onMouseLeave={handleMouseLeave}>
+        <>
             <div className="checkbox-title-container" >
                 <div 
                 className={ `checkbox icon-container ${isDone? 'checkbox-checked': ''}`} 
@@ -68,9 +56,9 @@ function TodoItem({id, title,isDone}){
                 }
             </div>
             <button className={`delete-todo icon-container`} onClick={()=>{dispatch(deleteTodo(id))}}>
-                { hovering ? <Icon.Trashcan />: null}
+                <Icon.Trashcan />
             </button>
-        </li>
+        </>
         
     );
 }

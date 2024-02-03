@@ -1,19 +1,20 @@
-import { useRef, useContext} from "react";
+import { useRef, useContext, memo} from "react";
 import { TodoContext } from "../Todo";
 import {Icon} from "../../Icon";
 import { addTodo } from "../todo.actions";
 import './AddTodo.scss';
 
-export default function AddTodo(){
+function AddTodo(){
+    console.log('AddTodo +')
 
-    const {dispatch} = useContext(TodoContext);
+    const dispatch = useContext(TodoContext);
     const todoTitle = useRef();
 
     function handleSubmit(e){
         e.preventDefault();
         let title = todoTitle.current.value;
         if (!!title.trim()){
-            dispatch(addTodo(title, new Date().getTime()) );
+            dispatch(addTodo(title, new Date().getTime()));
         }
         todoTitle.current.value = '';
     }
@@ -26,5 +27,6 @@ export default function AddTodo(){
             </button>
         </form>
     )
-
 }
+
+export default memo(AddTodo);
