@@ -71,7 +71,6 @@ function TodoItem({id, title,isDone}){
                 { hovering ? <Icon.Trashcan />: null}
             </button>
         </li>
-        
     );
 }
 
