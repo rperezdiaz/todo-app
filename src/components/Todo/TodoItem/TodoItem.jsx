@@ -32,7 +32,7 @@ function TodoItem({id, title,isDone}){
     }
 
     return(
-        <>
+        <div className="todo-item-container">
             <div className="checkbox-title-container" >
                 <div 
                 className={ `checkbox icon-container ${isDone? 'checkbox-checked': ''}`} 
@@ -58,7 +58,7 @@ function TodoItem({id, title,isDone}){
             <button className={`delete-todo icon-container`} onClick={()=>{dispatch(deleteTodo(id))}}>
                 <Icon.Trashcan />
             </button>
-        </>
+        </div>
         
     );
 }

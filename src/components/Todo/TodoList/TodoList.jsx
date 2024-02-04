@@ -6,8 +6,7 @@ export default function TodoList({list}){
         <ul className="todolist-container">
             {list.map((todo) => (
                 <li 
-                key={todo.id} 
-                className="todo-item-container">
+                key={todo.id}>
                     <TodoItem 
                     id={todo.id}
                     title={todo.title} 

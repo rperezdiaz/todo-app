@@ -7,7 +7,7 @@ export const TodoContext = createContext(null);
 
 export default function Todo(){
     const [todos, dispatch] = useReducer(todoReducer,[{title:"Learn React", id:-1, isDone:false}]);
-    const [filtered, setFiltered] = useState(todos);
+    const [filtered, setFiltered] = useState([]);
     const [filterType, setFilterType] = useState('')
 
     useEffect(()=>{
@@ -37,8 +37,10 @@ export default function Todo(){
             <TodoContext.Provider value={dispatch}>
                 <AddTodo />
             </TodoContext.Provider>
-            <button onClick={showAll}>Show All</button>
-            <button onClick={showPending}>Show Pending Only</button>
+            <div>
+                <button onClick={showAll}>Show All ({todos.length})</button>
+                <button onClick={showPending}>Pending ({todos.filter((todo)=>todo.isDone===false).length})</button>
+            </div>
             <TodoContext.Provider value={dispatch}>
                 <TodoList list={filtered} /> 
             </TodoContext.Provider> 
