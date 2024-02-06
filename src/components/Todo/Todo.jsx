@@ -18,8 +18,11 @@ export default function Todo(){
                 )
                 break;
             }
-            default:{
+            case 'showAll':{
                 setFiltered(todos);
+            }
+            default:{
+                console.log(`${filterType} not valid`)
             }
         }
     },[todos, filterType])
@@ -29,7 +32,7 @@ export default function Todo(){
     }
 
     const showAll = () =>{
-        setFilterType('')
+        setFilterType('showAll')
     }
 
     return(
