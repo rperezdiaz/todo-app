@@ -1,5 +1,19 @@
 
 ul{
     padding: 0;
+    margin: 0;
 }
-  
+
+.todolist-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+}
+
+li{
+    list-style-type: none;
+    width: 100%;
+}

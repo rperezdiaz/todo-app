@@ -1,89 +1,66 @@
-import { useState, useContext, useReducer, useRef} from "react";
+import { useState, useContext,useRef, memo} from "react";
 import { TodoContext } from "../Todo";
 import { Icon } from "../../Icon";
-import './TodoItem.scss'
+import { deleteTodo, editTodoTitle, toggleTodoDone } from "../todo.actions";
+import './TodoItem.scss';
 
-export default function TodoItem({item}){
-    const [todo ,dispatch] = useReducer(todoItemReducer, item);
-    const [hovering, setHovering] = useState(false);
+function TodoItem({id, title,isDone}){
+    console.log(title)
+
     const [isEditing, setIsEditing] = useState(false);
-    const context = useContext(TodoContext);
-    const editedTitle = useRef()
+    const dispatch = useContext(TodoContext);
+    const editTitleRef = useRef();
 
-    const handleChange = () =>{
-        dispatch({
-            type: 'check',
-            payload: !todo.checked
-        })
+    const handleDone = () =>{
+        dispatch(toggleTodoDone(id, !isDone));
     };
 
+    const submitEdit = (e) => {
+        e.preventDefault();
+        if(editTitleRef.current.value.trim()){
+            dispatch(editTodoTitle(id, editTitleRef.current.value))
+        };
+        setIsEditing(!isEditing);
+    }
+    
     const handleDblClick = () => {
         setIsEditing(!isEditing);
     }
 
-    const submitEdit = () => {
-        if(editedTitle.current.value.trim()){
-            dispatch({
-            type: 'edit',
-            payload: editedTitle.current.value
-        });
-        }
-        setIsEditing(!isEditing);
-    }
-
-    const handleMouseOver = () => {
-        setHovering(true);
-    }
-    const handleMouseLeave = () => {
-        setHovering(false);
+    const handleOnBlur = () =>{
+        setIsEditing(false)
     }
 
     return(
-        <li 
-        className="todo-item-container" 
-        onMouseOver={handleMouseOver} 
-        onMouseLeave={handleMouseLeave}>
+        <div className="todo-item-container">
             <div className="checkbox-title-container" >
                 <div 
-                className={ `checkbox icon-container ${todo.checked? 'checkbox-checked': ''}`} 
-                onClick={handleChange} 
+                className={ `checkbox icon-container ${isDone? 'checkbox-checked': ''}`} 
+                onClick={handleDone} 
                 role="button" >
                 {
-                    todo.checked ? <Icon.Checked /> : <Icon.Unchecked />
+                    isDone ? <Icon.Checked /> : <Icon.Unchecked />
                 }
                 </div>
                 {
                     isEditing ? 
                     <form onSubmit={submitEdit}>
-                        <input ref={editedTitle} type="text" defaultValue={todo.title}/>
+                        <input ref={editTitleRef} type="text" defaultValue={title} autoFocus onBlur={handleOnBlur}/>
                     </form> 
                     : 
                     <div 
-                    className={`todo-title ${todo.checked? 'title-checked' : ''}`}
+                    className={`todo-title ${isDone? 'title-checked' : ''}`}
                     onDoubleClick={handleDblClick}>
-                        {todo.title}
+                        {title}
                     </div>
                 }
             </div>
-            <button className={`delete-todo icon-container`} onClick={()=>context.deleteTodo(todo)}>
-                { hovering ? <Icon.Trashcan />: null}
+            <button className={`delete-todo icon-container`} onClick={()=>{dispatch(deleteTodo(id))}}>
+                <Icon.Trashcan />
             </button>
-        </li>
+        </div>
         
     );
 }
 
-const todoItemReducer = (state, action) =>{
-    const{type,payload} = action;
-    switch(type){
-        case 'check':{
-            return {...state, checked:payload};
-        }
-        case 'edit':{
-            return {...state, title:payload}
-        }
-        default: {
-            break;
-        }
-    }
-}
+export default memo(TodoItem);
