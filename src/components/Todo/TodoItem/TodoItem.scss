@@ -27,10 +27,19 @@
     box-shadow: #818181 2px 2px 3px;
     border: 1px solid transparent;
     transition: enter 1s;
+
+    .delete-todo{
+        visibility: hidden;
+    }
+
 }
 
 .todo-item-container:hover{
     border: 1px solid black;
+
+    .delete-todo{
+        visibility: visible;
+    }
 }
 
 .checkbox{
