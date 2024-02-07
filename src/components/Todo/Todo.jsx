@@ -7,24 +7,29 @@ export const TodoContext = createContext(null);
 
 export default function Todo(){
     const [todos, dispatch] = useReducer(todoReducer,[{title:"Learn React", id:-1, isDone:false}]);
-    const [filtered, setFiltered] = useState([]);
-    const [filterType, setFilterType] = useState('')
+    // const [filtered, setFiltered] = useState([]);
+    const [filtered,dispatchFilter] = useReducer(filterReducer,[])
+    const [filterType, setFilterType] = useState('all')
 
+    
     useEffect(()=>{
-        switch(filterType){
-            case 'pending':{
-                setFiltered(
-                    [...todos.filter((todo)=>todo.isDone===false)]
-                )
-                break;
-            }
-            case 'showAll':{
-                setFiltered(todos);
-            }
-            default:{
-                console.log(`${filterType} not valid`)
-            }
-        }
+        // switch(filterType){
+        //     case 'pending':{
+        //         setFiltered(
+        //             [...todos.filter((todo)=>todo.isDone===false)]
+        //         )
+        //         break;
+        //     }
+        //     case 'all':{
+        //         setFiltered(todos);
+        //         break;
+        //     }
+        //     default:{
+        //         console.log(`${filterType} not valid`)
+        //     }
+        // }
+
+        dispatchFilter({type: filterType, payload:todos})
     },[todos, filterType])
 
     const showPending = () =>{
@@ -32,7 +37,7 @@ export default function Todo(){
     }
 
     const showAll = () =>{
-        setFilterType('showAll')
+        setFilterType('all')
     }
 
     return(
@@ -49,4 +54,19 @@ export default function Todo(){
             </TodoContext.Provider> 
         </div>
     );
+}
+
+function filterReducer(state,action){
+    const {type, payload} = action;
+    switch(type){
+        case 'pending':{
+            return [...payload.filter((todo)=>todo.isDone===false)];
+        }
+        case 'all':{
+            return [...payload];
+        }
+        default:{
+            break;
+        }
+    }
 }
