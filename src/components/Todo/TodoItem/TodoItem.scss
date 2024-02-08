@@ -24,7 +24,7 @@
     height: fit-content;
     padding: 0 10px;
     border-radius: 10px;
-    box-shadow: #818181 2px 2px 3px;
+    box-shadow: $dark-gray 2px 2px 3px;
     border: 1px solid transparent;
     transition: enter 1s;
 
@@ -52,7 +52,7 @@
 }
 
 .checkbox-checked{
-    color:#31de24;
+    color:$done-green;
     transform: rotateY(360deg);
 }
 
