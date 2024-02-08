@@ -6,31 +6,22 @@ import todoReducer from "./todo.reducer";
 export const TodoContext = createContext(null);
 
 export default function Todo(){
-    const [todos, dispatch] = useReducer(todoReducer,[{title:"Learn React", id:-1, isDone:false}]);
-    // const [filtered, setFiltered] = useState([]);
-    const [filtered,dispatchFilter] = useReducer(filterReducer,[])
+    const [todos, dispatch] = useReducer(todoReducer,[{title:"Learn React", id:-1, isDone:false}], (defaultValue)=>{
+            const localTodos = localStorage.getItem('todos')
+            return localTodos ? JSON.parse(localTodos): defaultValue;
+    });
+        
+    const [filtered, dispatchFilter] = useReducer(filterReducer,[])
     const [filterType, setFilterType] = useState('all')
 
     
     useEffect(()=>{
-        // switch(filterType){
-        //     case 'pending':{
-        //         setFiltered(
-        //             [...todos.filter((todo)=>todo.isDone===false)]
-        //         )
-        //         break;
-        //     }
-        //     case 'all':{
-        //         setFiltered(todos);
-        //         break;
-        //     }
-        //     default:{
-        //         console.log(`${filterType} not valid`)
-        //     }
-        // }
-
         dispatchFilter({type: filterType, payload:todos})
     },[todos, filterType])
+
+    useEffect(()=>{
+        localStorage.setItem('todos',JSON.stringify(todos))
+    },[todos])
 
     const showPending = () =>{
         setFilterType('pending')
