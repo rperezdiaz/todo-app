@@ -7,8 +7,8 @@ export const TodoContext = createContext(null);
 
 export default function Todo(){
     const [todos, dispatch] = useReducer(todoReducer,[{title:"Learn React", id:-1, isDone:false}], (defaultValue)=>{
-            const localTodos = localStorage.getItem('todos')
-            return localTodos ? JSON.parse(localTodos): defaultValue;
+            const localdata = localStorage.getItem('todos')
+            return localdata ? JSON.parse(localdata): defaultValue;
     });
         
     const [filtered, dispatchFilter] = useReducer(filterReducer,[])
