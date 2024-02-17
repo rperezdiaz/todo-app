@@ -1,5 +1,6 @@
 import { useState, useContext,useRef, memo} from "react";
 import { TodoContext } from "../Todo";
+import Button from "../../common/Button";
 import { Icon } from "../../Icon";
 import { deleteTodo, editTodoTitle, toggleTodoDone } from "../todo.actions";
 import './TodoItem.scss';
@@ -55,9 +56,9 @@ function TodoItem({id, title,isDone}){
                     </div>
                 }
             </div>
-            <button className={`delete-todo icon-container`} onClick={()=>{dispatch(deleteTodo(id))}}>
+            <Button className={`delete-todo icon-container`} onClickFunc={()=>{dispatch(deleteTodo(id))}}>
                 <Icon.Trashcan />
-            </button>
+            </Button>
         </div>
         
     );

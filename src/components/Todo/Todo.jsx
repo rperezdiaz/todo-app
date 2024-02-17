@@ -1,8 +1,9 @@
 import { useReducer, createContext, useState, useEffect } from "react";
-import useLocalStorageReducer from "../hooks/useLocalStorage";
+import useLocalStorageReducer from "../../hooks/useLocalStorage";
 import TodoList from "./TodoList/TodoList";
 import AddTodo from "./AddTodo/AddTodo";
 import todoReducer from "./todo.reducer";
+import Button from "../common/Button";
 
 export const TodoContext = createContext(null);
 
@@ -35,12 +36,19 @@ export default function Todo(){
         <div id="todo">
             <TodoContext.Provider value={dispatch}>
                 <AddTodo />
-            </TodoContext.Provider>
-            <div>
-                <button onClick={showAll}>Show All ({todos.length})</button>
-                <button onClick={showPending}>Pending ({todos.filter((todo)=>todo.isDone===false).length})</button>
-            </div>
-            <TodoContext.Provider value={dispatch}>
+                <div>
+                    <Button 
+                    onClickFunc={showAll} 
+                    children={`Show All (${todos.length})`}
+                    />
+                    <Button 
+                    onClickFunc={showPending} 
+                    children={`Pending (${todos.filter((todo)=>todo.isDone===false).length})`}
+                    />
+
+                    {/* <button onClick={showAll}>Show All ({todos.length})</button>
+                    <button onClick={showPending}>Pending ({todos.filter((todo)=>todo.isDone===false).length})</button> */}
+                </div>
                 <TodoList list={filtered} /> 
             </TodoContext.Provider> 
         </div>
