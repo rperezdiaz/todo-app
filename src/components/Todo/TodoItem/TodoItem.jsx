@@ -21,11 +21,11 @@ function TodoItem({id, title,isDone}){
         if(editTitleRef.current.value.trim()){
             dispatch(editTodoTitle(id, editTitleRef.current.value))
         };
-        setIsEditing(!isEditing);
+        setIsEditing(false);
     }
     
-    const handleDblClick = () => {
-        setIsEditing(!isEditing);
+    const handleEdit = () => {
+            setIsEditing(true);
     }
 
     const handleOnBlur = () =>{
@@ -51,12 +51,15 @@ function TodoItem({id, title,isDone}){
                     : 
                     <div 
                     className={`todo-title ${isDone? 'title-checked' : ''}`}
-                    onDoubleClick={handleDblClick}>
+                    onDoubleClick={handleEdit}>
                         {title}
                     </div>
                 }
             </div>
-            <Button className={`delete-todo icon-container`} onClickFunc={()=>{dispatch(deleteTodo(id))}}>
+            <Button className={`edit-todo icon-container btn-icon`} onClickFunc={handleEdit}>
+                <Icon.Edit />
+            </Button>
+            <Button className={`delete-todo icon-container btn-icon`} onClickFunc={()=>{dispatch(deleteTodo(id))}}>
                 <Icon.Trashcan />
             </Button>
         </div>

@@ -1,18 +1,30 @@
 @import "../../../styles/variables";
 
-.delete-todo{
+.btn-icon{
     background-color: transparent;
     display: flex;
     justify-content: center;
     align-items: center;
     border:none;
     color: $light-gray;
-    width: 22px;
     padding: 0;
+    cursor: pointer;
   }
   
 .delete-todo:hover{
     color: $red-color
+}
+
+.delete-todo{
+    width: 22px;
+}
+
+.edit-todo{
+    width: 24px;
+}
+
+.edit-todo:hover{
+    color: $blue;
 }
 
 .todo-item-container{
@@ -28,19 +40,20 @@
     border: 1px solid transparent;
     transition: enter 1s;
 
-    .delete-todo{
+    .delete-todo, .edit-todo{
         visibility: hidden;
     }
-
 }
 
 .todo-item-container:hover{
     border: 1px solid black;
 
-    .delete-todo{
+    .delete-todo, .edit-todo{
         visibility: visible;
     }
 }
+
+
 
 .checkbox{
     display: inherit;
