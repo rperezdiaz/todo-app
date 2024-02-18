@@ -37,17 +37,12 @@ export default function Todo(){
             <TodoContext.Provider value={dispatch}>
                 <AddTodo />
                 <div>
-                    <Button 
-                    onClickFunc={showAll} 
-                    children={`Show All (${todos.length})`}
-                    />
-                    <Button 
-                    onClickFunc={showPending} 
-                    children={`Pending (${todos.filter((todo)=>todo.isDone===false).length})`}
-                    />
-
-                    {/* <button onClick={showAll}>Show All ({todos.length})</button>
-                    <button onClick={showPending}>Pending ({todos.filter((todo)=>todo.isDone===false).length})</button> */}
+                    <Button onClickFunc={showAll}>
+                        {`Show All (${todos.length})`}
+                    </Button>
+                    <Button onClickFunc={showPending} >
+                        {`Pending (${todos.filter((todo)=>todo.isDone===false).length})`}
+                    </Button>
                 </div>
                 <TodoList list={filtered} /> 
             </TodoContext.Provider> 
