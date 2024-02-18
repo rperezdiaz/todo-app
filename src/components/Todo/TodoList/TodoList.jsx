@@ -12,14 +12,6 @@ export default function TodoList({todos}){
         dispatchFilter({type: filterType, payload:todos})
     },[todos, filterType])
 
-    const showPending = () =>{
-        setFilterType('pending')
-    }
-
-    const showAll = () =>{
-        setFilterType('all')
-    }
-
     const handleDropdownChange = (e)=>{
         setFilterType(e.target.value)
     }
@@ -27,12 +19,6 @@ export default function TodoList({todos}){
     return(
         <>
             <div className="list-filters">
-                {/* <Button onClickFunc={showAll}>
-                    {`Show All (${todos.length})`}
-                </Button>
-                <Button onClickFunc={showPending} >
-                    {`Pending (${todos.filter((todo)=>todo.isDone===false).length})`}
-                </Button> */}
                 <label for="status">Status</label>
                 <select id="status" onChange={handleDropdownChange}>
                     <option value="all">All</option>
