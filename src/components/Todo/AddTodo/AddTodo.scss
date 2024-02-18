@@ -3,7 +3,7 @@
 .add-todo-form{
     height: 40px;
     border-radius: 50px;
-    border: 1px solid  $purple;
+    border: 1px solid  $dark-gray;
     display: flex;
     align-items: center;
     box-sizing: border-box;
@@ -28,7 +28,7 @@
     justify-content: center;
     align-items: center;
     border-radius: 50px;
-    background-color: $purple;
+    background-color: $light-gray;
     color: white;
     border: none; 
     margin-right: 3px;
@@ -37,5 +37,6 @@
   }
 
   #add-form-button:hover{
-    background-color: $purple-dark;
+    background-color: $blue;
+    transition: 0.3s ease;
   }

@@ -1,5 +1,6 @@
 import { useState, useContext,useRef, memo} from "react";
 import { TodoContext } from "../Todo";
+import Button from "../../common/Button";
 import { Icon } from "../../Icon";
 import { deleteTodo, editTodoTitle, toggleTodoDone } from "../todo.actions";
 import './TodoItem.scss';
@@ -20,11 +21,11 @@ function TodoItem({id, title,isDone}){
         if(editTitleRef.current.value.trim()){
             dispatch(editTodoTitle(id, editTitleRef.current.value))
         };
-        setIsEditing(!isEditing);
+        setIsEditing(false);
     }
     
-    const handleDblClick = () => {
-        setIsEditing(!isEditing);
+    const handleEdit = () => {
+            setIsEditing(true);
     }
 
     const handleOnBlur = () =>{
@@ -50,14 +51,17 @@ function TodoItem({id, title,isDone}){
                     : 
                     <div 
                     className={`todo-title ${isDone? 'title-checked' : ''}`}
-                    onDoubleClick={handleDblClick}>
+                    onDoubleClick={handleEdit}>
                         {title}
                     </div>
                 }
             </div>
-            <button className={`delete-todo icon-container`} onClick={()=>{dispatch(deleteTodo(id))}}>
+            <Button className={`edit-todo icon-container btn-icon`} onClickFunc={handleEdit}>
+                <Icon.Edit />
+            </Button>
+            <Button className={`delete-todo icon-container btn-icon`} onClickFunc={()=>{dispatch(deleteTodo(id))}}>
                 <Icon.Trashcan />
-            </button>
+            </Button>
         </div>
         
     );

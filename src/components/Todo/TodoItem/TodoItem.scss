@@ -1,20 +1,5 @@
 @import "../../../styles/variables";
 
-.delete-todo{
-    background-color: transparent;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border:none;
-    color: $light-gray;
-    width: 22px;
-    padding: 0;
-  }
-  
-.delete-todo:hover{
-    color: $red-color
-}
-
 .todo-item-container{
     display:flex;
     align-items:center;
@@ -24,20 +9,19 @@
     height: fit-content;
     padding: 0 10px;
     border-radius: 10px;
-    box-shadow: #818181 2px 2px 3px;
+    box-shadow: $dark-gray 2px 2px 3px;
     border: 1px solid transparent;
     transition: enter 1s;
 
-    .delete-todo{
+    .delete-todo, .edit-todo{
         visibility: hidden;
     }
-
 }
 
 .todo-item-container:hover{
     border: 1px solid black;
 
-    .delete-todo{
+    .delete-todo, .edit-todo{
         visibility: visible;
     }
 }
@@ -52,7 +36,7 @@
 }
 
 .checkbox-checked{
-    color:#31de24;
+    color:$done-green;
     transform: rotateY(360deg);
 }
 
@@ -73,4 +57,20 @@
 .title-checked{
     color: $light-gray;
     text-decoration: line-through;
+}
+
+.delete-todo:hover{
+    color: $red-color
+}
+
+.delete-todo{
+    width: 22px;
+}
+
+.edit-todo{
+    width: 24px;
+}
+
+.edit-todo:hover{
+    color: $blue;
 }
