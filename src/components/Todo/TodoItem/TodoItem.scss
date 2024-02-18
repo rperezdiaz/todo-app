@@ -1,32 +1,5 @@
 @import "../../../styles/variables";
 
-.btn-icon{
-    background-color: transparent;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border:none;
-    color: $light-gray;
-    padding: 0;
-    cursor: pointer;
-  }
-  
-.delete-todo:hover{
-    color: $red-color
-}
-
-.delete-todo{
-    width: 22px;
-}
-
-.edit-todo{
-    width: 24px;
-}
-
-.edit-todo:hover{
-    color: $blue;
-}
-
 .todo-item-container{
     display:flex;
     align-items:center;
@@ -52,8 +25,6 @@
         visibility: visible;
     }
 }
-
-
 
 .checkbox{
     display: inherit;
@@ -86,4 +57,20 @@
 .title-checked{
     color: $light-gray;
     text-decoration: line-through;
+}
+
+.delete-todo:hover{
+    color: $red-color
+}
+
+.delete-todo{
+    width: 22px;
+}
+
+.edit-todo{
+    width: 24px;
+}
+
+.edit-todo:hover{
+    color: $blue;
 }

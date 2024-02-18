@@ -21,6 +21,17 @@ body{
   padding-top: 25px;
 }
 
+.btn-icon{
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border:none;
+  color: $light-gray;
+  padding: 0;
+  cursor: pointer;
+}
+
 .icon-container{
   padding: 0;
   svg{
