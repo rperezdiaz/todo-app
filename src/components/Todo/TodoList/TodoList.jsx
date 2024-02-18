@@ -1,6 +1,5 @@
 import { useReducer, useState, useEffect } from "react";
 import TodoItem from "../TodoItem/TodoItem";
-import Button from "../../common/Button";
 import "./TodoList.scss"
 
 export default function TodoList({todos}){
